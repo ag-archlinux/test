@@ -6,7 +6,7 @@ ping -q -w1 -c1 google.com &>/dev/null || trap "echo 'First you need to setup wi
 #####  SELECT THE MIRRORS          #####
 question_yesno(){
 NEXT=0
-while $NEXT=1
+while[$NEXT != 1]
 do
   read -p "$1" ANSWER
   case "$ANSWER" in 
