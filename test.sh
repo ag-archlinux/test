@@ -4,22 +4,24 @@ ping -q -w1 -c1 google.com &>/dev/null || wifi-menu
 ping -q -w1 -c1 google.com &>/dev/null || trap "echo 'First you need to setup wifi connection!'" exit
 ##### TEST      ######
 #####  SELECT THE MIRRORS          #####
+question_yesno{
 NEXT=0
 while $NEXT=1
 do
-  read -p "Reboot (y/n)?" ANSWER
+  read -p "$1" ANSWER
   case "$ANSWER" in 
     [yY][eE][sS]|[yY]) 
-      reboot
+      $2
       NEXT=1     
       ;;
-    [nN][oO]|[nN]) 
+    [nN][oO]|[nN])
+      $3
       NEXT=1
       ;;
   esac
 done
-pacman --noconfirm --needed -S reflector
-
-rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
-nano /etc/pacman.d/mirrorlist  
-sudo pacman -Syy
+}
+question_yesno "Reboot (y/n)?" reboot
+#pacman --noconfirm --needed -S reflector
+#nano /etc/pacman.d/mirrorlist  
+#sudo pacman -Syy
