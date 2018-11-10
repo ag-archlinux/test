@@ -4,6 +4,6 @@ ping -q -w1 -c1 google.com &>/dev/null && echo "You are connected to the interne
 #####  SELECT THE MIRRORS          #####
 pacman --noconfirm --needed -S reflector
 
-reflector -l 200 -f 10 --sort score --save /etc/pacman.d/mirrorlist
+rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
 nano /etc/pacman.d/mirrorlist  
 sudo pacman -Syy
