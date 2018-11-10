@@ -23,3 +23,23 @@ question_yesno "Reboot (y/n)? " "reboot" ""
 #pacman --noconfirm --needed -S reflector
 #nano /etc/pacman.d/mirrorlist  
 #sudo pacman -Syy
+
+#!/bin/bash
+#####  FUNCTIONS SCRIPT                        #####
+set -e
+#####  QUESTION YES/NO FUNCTION                #####        
+question_yesno(){
+NEXT=0; until [ $NEXT -eq 1 ]; do
+  read -p "$1" ANSWER
+  case "$ANSWER" in 
+    [yY][eE][sS]|[yY]) 
+      $2
+      NEXT=1
+      ;;
+    [nN][oO]|[nN]) 
+      $3
+      NEXT=1
+      ;;
+  esac
+done
+}
