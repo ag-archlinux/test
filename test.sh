@@ -1,7 +1,7 @@
 #!/bin/bash
-ping -q -w1 -c1 google.com &>/dev/null && echo "You are connected to the internet!" || echo -e "\033[0;36m'You are not connected to the internet!'\033[0;0m" 
-ping -q -w1 -c1 google.com &>/dev/null || wifi-menu
-ping -q -w1 -c1 google.com &>/dev/null || exit
+ping -q -w1 -c1 google.com &>/dev/null && echo "You are connected to the internet!" || echo -e "\033[0;36m'You are not connected to the internet!'\033[0;0m";wifi-menu;exit 
+#ping -q -w1 -c1 google.com &>/dev/null || wifi-menu
+#ping -q -w1 -c1 google.com &>/dev/null || exit
 ##### TEST      ######
 #####  SELECT THE MIRRORS          #####
 question_yesno(){
