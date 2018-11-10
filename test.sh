@@ -5,6 +5,7 @@ ping -q -w1 -c1 google.com &>/dev/null && echo "You are connected to the interne
 pacman --noconfirm --needed -S reflector
 
 #sudo reflector -l 100 -f 50 -c BE -c NL -c FR -c DE -c GB --sort rate --threads 5 --verbose --save /tmp/mirrorlist.new && rankmirrors -n 0 /tmp/mirrorlist.new > /tmp/mirrorlist && sudo cp /tmp/mirrorlist /etc/pacman.d
-reflector --protocol --lastest 50 --number 20 --sort rate --save /etc/pacman.d/mirrorlist
+#reflector --protocol --lastest 50 --number 20 --sort rate --save /etc/pacman.d/mirrorlist
+sudo reflector --latest 5 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 cat /etc/pacman.d/mirrorlist
-sudo pacman -Syu
+sudo pacman -Syy
