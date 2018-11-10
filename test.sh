@@ -1,7 +1,7 @@
 #!/bin/bash
+set -e
 ##### TEST      ######
-ping -q -w1 -c1 google.com &>/dev/null && (echo "You are connected to the internet!";PIN=1;) || (echo -e "\033[0;36m'You are not connected to the internet!'\033[0;0m";wifi-menu;PIN=0;)
-if [ $PIN = 0 ]; then exit fi
+ping -q -w1 -c1 google.com &>/dev/null && echo "You are connected to the internet!" || (echo -e "\033[0;36m'You are not connected to the internet!'\033[0;0m";wifi-menu;exit;)
 #####  QUESTION YESNO              #####        
 question_yesno(){
 NEXT=0; until [ $NEXT -eq 1 ]; do
@@ -18,7 +18,7 @@ NEXT=0; until [ $NEXT -eq 1 ]; do
   esac
 done
 }
-question_yesno "Reboot (y/n)?" "reboot" ""
+question_yesno "Reboot (y/n)? " "reboot" ""
 #####  SELECT THE MIRRORS          #####
 #pacman --noconfirm --needed -S reflector
 #nano /etc/pacman.d/mirrorlist  
