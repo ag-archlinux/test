@@ -17,20 +17,6 @@ case "$ANSWER" in
   ;;
 esac
 done
-
-#while [ -z "$ROOT_PASSWORD" ]
-#do
-#    read -p "Continue (y/n)?" choice
-#
-#    if [ "$PASSWORD1" = "$PASSWORD2" ]; then
-#        ROOT_PASSWORD=$PASSWORD1
-#    else
-#        color1='\033[0;36m'
-#        color2='\033[0;0m'
-#        echo ""
-#        echo -e "${color1}Passwords did not match!${color2}"
-#    fi
-#done
 pacman --noconfirm --needed -S reflector
 
 rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
