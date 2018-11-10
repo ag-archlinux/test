@@ -8,7 +8,7 @@ question_yesno "Reboot (y/n)?" reboot
 #sudo pacman -Syy
 question_yesno(){
 NEXT=0
-while[$NEXT != 1] do
+while[$NEXT != 1]; do
   read -p "$1" ANSWER
   case "$ANSWER" in 
     [yY][eE][sS]|[yY]) 
@@ -20,5 +20,5 @@ while[$NEXT != 1] do
       NEXT=1
       ;;
   esac
-done
+done;
 }
