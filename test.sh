@@ -6,7 +6,7 @@ ping -q -w1 -c1 google.com &>/dev/null || trap "echo 'First you need to setup wi
 read -p "Press any key..."
 #####  SELECT THE MIRRORS          #####
 NEXT=0
-while[$NEXT=1]
+while $NEXT=1
 do
 read -p "Reboot (y/n)?" ANSWER
 case "$ANSWER" in 
