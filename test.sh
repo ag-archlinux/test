@@ -20,4 +20,4 @@ until [ $NEXT -ne 1 ]; do
   esac
 done
 }
-question_yesno "Reboot (y/n)?" reboot
+question_yesno "Reboot (y/n)?" "reboot" ""
