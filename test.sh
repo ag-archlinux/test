@@ -6,7 +6,7 @@ ping -q -w1 -c1 google.com &>/dev/null && echo "You are connected to the interne
 #nano /etc/pacman.d/mirrorlist  
 #sudo pacman -Syy
 question_yesno(){
-until [ $NEXT -ne 1 ]; do
+NEXT=0; until [ $NEXT -ne 1 ]; do
   read -p "$1" ANSWER
   case "$ANSWER" in 
     [yY][eE][sS]|[yY])
@@ -20,4 +20,4 @@ until [ $NEXT -ne 1 ]; do
   esac
 done
 }
-question_yesno "Reboot (y/n)?" "reboot" ""
+question_yesno "Reboot (y/n)?" "reboot"
