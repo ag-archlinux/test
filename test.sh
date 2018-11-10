@@ -10,8 +10,14 @@ question_yesno(){
 NEXT=0; until [ $NEXT -eq 1 ]; do
   read -p "$1" ANSWER
   case "$ANSWER" in 
-    [yY][eE][sS]|[yY]) ($2;NEXT=1;);;
-    [nN][oO]|[nN]) ($3;NEXT=1;);;
+    [yY][eE][sS]|[yY]) 
+      $2
+      NEXT=1
+      ;;
+    [nN][oO]|[nN]) 
+      $3
+      NEXT=1
+      ;;
   esac
 done
 }
