@@ -24,6 +24,26 @@ question_yesno "Reboot (y/n)? " "reboot" ""
 #nano /etc/pacman.d/mirrorlist  
 #sudo pacman -Syy
 
+
+
+#while [ -z "$ROOT_PASSWORD" ]
+#do
+#    echo "Please enter a root password:"
+#    read -s PASSWORD1
+#    echo "Please re-enter the root password to confirm:"
+#    read -s PASSWORD2
+#
+#    if [ "$PASSWORD1" = "$PASSWORD2" ]; then
+#        ROOT_PASSWORD=$PASSWORD1
+#    else
+#        color1='\033[0;36m'
+#        color2='\033[0;0m'
+#        echo ""
+#        echo -e "${color1}Passwords did not match!${color2}"
+#    fi
+#done
+
+
 #!/bin/bash
 #####  FUNCTIONS SCRIPT                        #####
 set -e
