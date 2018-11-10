@@ -1,21 +1,22 @@
 #!/bin/bash
 ping -q -w1 -c1 google.com &>/dev/null && echo "You are connected to the internet!" || echo -e "\033[0;36m'You are not connected to the internet!'\033[0;0m" 
 ping -q -w1 -c1 google.com &>/dev/null || wifi-menu
-ping -q -w1 -c1 google.com &>/dev/null || trap "echo 'First you need to setup wifi connection!'" SIGINT
+ping -q -w1 -c1 google.com &>/dev/null || trap "echo 'First you need to setup wifi connection!'" exit
 ##### TEST      ######
-read -p "Press any key..."
 #####  SELECT THE MIRRORS          #####
 NEXT=0
 while $NEXT=1
 do
-read -p "Reboot (y/n)?" ANSWER
-case "$ANSWER" in 
-  y|Y ) reboot
-        $NEXT=1     
-  ;;
-  n|N ) $NEXT=1
-  ;;
-esac
+  read -p "Reboot (y/n)?" ANSWER
+  case "$ANSWER" in 
+    [yY][eE][sS]|[yY]) 
+      reboot
+      NEXT=1     
+      ;;
+    [nN][oO]|[nN]) 
+      NEXT=1
+      ;;
+  esac
 done
 pacman --noconfirm --needed -S reflector
 
