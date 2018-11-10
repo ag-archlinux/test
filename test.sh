@@ -5,6 +5,7 @@ ping -q -w1 -c1 google.com &>/dev/null && echo "You are connected to the interne
 #pacman --noconfirm --needed -S reflector
 #nano /etc/pacman.d/mirrorlist  
 #sudo pacman -Syy
+question_yesno "Reboot (y/n)?" reboot
 question_yesno(){
 NEXT=0
 while[$NEXT -ne 1] 
@@ -16,4 +17,3 @@ do
   esac
 done
 }
-question_yesno "Reboot (y/n)?" reboot
