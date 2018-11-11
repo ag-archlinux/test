@@ -4,9 +4,6 @@ set -e
 sudo pacman -Sy 
 sudo pacman -S --noconfirm --needed python
 #####  SELECT THE MIRRORS          #####
-#sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-#sudo sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.backup
-#sudo rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
 
 sudo pacman -S --noconfirm --needed reflector
 sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
