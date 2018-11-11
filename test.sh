@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 ##### TEST      ######
-
+pacman -Sy python
 #####  SELECT THE MIRRORS          #####
 sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 sudo sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.backup
