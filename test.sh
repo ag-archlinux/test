@@ -57,7 +57,7 @@ read -p "Press any key..."
 #####  SELECT THE MIRRORS          #####
 cp -vf /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
 pacman -Syy
-pacman --noconfirm --needed -S python
+pacman --noconfirm --needed -S python glibc rsync curl
 pacman --noconfirm --needed -S reflector
 reflector --verbose -l 5 --sort rate --save /etc/pacman.d/mirrorlist
 pacman -Syy
