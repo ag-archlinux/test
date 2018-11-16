@@ -11,8 +11,10 @@ read -p "Enter your hostname: " COMPUTER_NAME
 #####  VERIFY THE BOOT MODE        #####
 if [-d "/sys/firmware/efi/efivars"]; then
     echo "UEFI"
+    FORMATBOOT = mkfs.fat -F32 /dev/sda1
 else
     echo "BIOS"
+    FORMATBOOT = mkfs.ext4 /dev/sda1
 fi
 #####  UPDATE THE SYSTEM CLOCK     #####
 timedatectl set-ntp true
@@ -42,7 +44,7 @@ p
 w
 EOF
 #####  FORMAT THE PARTITIONS       #####
-yes | mkfs.ext4 /dev/sda1
+yes | ${FORMATBOOT} 
 yes | mkfs.ext4 /dev/sda3
 yes | mkfs.ext4 /dev/sda4
 mkswap /dev/sda2
@@ -55,14 +57,14 @@ mount /dev/sda4 /mnt/home
 lsblk
 read -p "Press any key..."
 #####  SELECT THE MIRRORS          #####
-cp -vf /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-pacman -Syy
-pacman --noconfirm --needed -S python glibc rsync curl
-pacman --noconfirm --needed -S reflector
-reflector --verbose -l 5 --sort rate --save /etc/pacman.d/mirrorlist
-pacman -Syy
-nano /etc/pacman.d/mirrorlist
-read -p "Press any key..."
+#####  cp -vf /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+#####  pacman -Syy
+#####  pacman --noconfirm --needed -S python glibc rsync curl
+#####  pacman --noconfirm --needed -S reflector
+#####  reflector --verbose -l 5 --sort rate --save /etc/pacman.d/mirrorlist
+#####  pacman -Syy
+#####  nano /etc/pacman.d/mirrorlist
+#####  read -p "Press any key..."
 #####  INSTAL THE BASE PACKAGES    #####
 pacstrap /mnt base base-devel
 #####  FSTAB                       #####
