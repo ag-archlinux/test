@@ -69,8 +69,10 @@ read -p "Press any key..."
 pacstrap /mnt base base-devel
 #####  FSTAB                       #####
 genfstab -U /mnt >> /mnt/etc/fstab
+#####  GIT                         #####
+pacman --noconfirm --needed -S git
 #####  MY FUNCTIONS                #####
-curl -O https://raw.githubusercontent.com/ag-archlinux/ag-archlinux/master/functions.sh && bash functions.sh
+git clone https://github.com/ag-archlinux/ag-archlinux && source ag-archlinux/functions.sh
 #####  CHROOT                      #####
 curl https://raw.githubusercontent.com/ag-archlinux/ag-archlinux/master/chroot.sh > /mnt/chroot.sh 
 arch-chroot /mnt bash chroot.sh
