@@ -11,10 +11,10 @@ read -p "Enter your hostname: " COMPUTER_NAME
 #####  VERIFY THE BOOT MODE        #####
 if [-d "/sys/firmware/efi/efivars"]; then
     echo "UEFI"
-    FORMATBOOT = $(mkfs.fat -F32 /dev/sda1)
+    FORMATBOOT = $("mkfs.fat -F32 /dev/sda1")
 else
     echo "BIOS"
-    FORMATBOOT = $(mkfs.ext4 /dev/sda1)
+    FORMATBOOT = $("mkfs.ext4 /dev/sda1")
 fi
 #####  UPDATE THE SYSTEM CLOCK     #####
 timedatectl set-ntp true
