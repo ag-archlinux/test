@@ -44,7 +44,7 @@ p
 w
 EOF
 #####  FORMAT THE PARTITIONS       #####
-yes | ${FORMATBOOT} 
+yes | $FORMATBOOT 
 yes | mkfs.ext4 /dev/sda3
 yes | mkfs.ext4 /dev/sda4
 mkswap /dev/sda2
